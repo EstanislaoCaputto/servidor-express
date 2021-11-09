@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "Arlequin",
+    "precio": 350,
+    "imagen": "./img/arlequin.jpg",
+    "id": "M0GZU"
+  },
+  {
+    "titulo": "Las Hojas",
+    "precio": 220,
+    "imagen": "./img/Las-Hojas.jpg",
+    "id": "EQIQci"
+  },
+  {
+    "titulo": "Van Haasen",
+    "precio": 22,
+    "imagen": "./img/van-häasen.jpg",
+    "id": "rhTtO"
+  }
+]
