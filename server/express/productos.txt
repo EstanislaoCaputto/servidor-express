@@ -1,20 +1,26 @@
 [
   {
-    "titulo": "Arlequin",
-    "precio": 350,
-    "imagen": "./img/arlequin.jpg",
-    "id": "M0GZU"
+    "titulo": "van-hâsen",
+    "descripcion": "tabaco negro",
+    "precio": "500",
+    "id": "oY85e"
   },
   {
-    "titulo": "Las Hojas",
-    "precio": 220,
-    "imagen": "./img/Las-Hojas.jpg",
-    "id": "EQIQci"
+    "titulo": "4leguas",
+    "descripcion": "tabaco barato",
+    "precio": "200",
+    "id": "FmPe5"
   },
   {
-    "titulo": "Van Haasen",
-    "precio": 22,
-    "imagen": "./img/van-häasen.jpg",
-    "id": "rhTtO"
+    "titulo": "Las hojas",
+    "descripcion": "tabaco muy barato",
+    "precio": 150,
+    "id": "7dp1p"
+  },
+  {
+    "titulo": "lucky",
+    "descripcion": "tabaco industrial",
+    "precio": 250,
+    "id": "WSD0T"
   }
 ]

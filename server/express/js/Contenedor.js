@@ -6,35 +6,45 @@ class Contenedor{
         this.archivo = archivo;
         
     }
-    save(producto) { //Recibe un objeto, lo guarda en el archivo, devuelve el id asignado.
-        for (let i in producto) {
-            let id = crearId(5);
-            producto.map(obj=>{
-                if(obj.id===id){
-                    id += crearId(1)
-                    
-                }else{
-                    producto[i].id = id;
-
-                }
-            })
-            console.log(`Producto guardado, id asignado: ${id}`)
+    async save(producto) { //Recibe un objeto, lo guarda en el archivo, devuelve el id asignado.
+        try{
+            let data = await fs.promises.readFile('./productos.txt','utf-8')
+            let prod = JSON.parse(data)
+            let id = crearId(5)
+            producto.id = id
+            prod.push(producto)
+            await fs.promises.writeFile('./productos.txt', JSON.stringify(prod, null, 2));
+            console.log(`${producto.titulo} guardado exitosamente con el id: ${producto.id}`)
+            return {status:"success", message:"producto guardado"}
+        }catch{
+            try {
+                let id = crearId(5)
+                producto.id = id
+                await fs.promises.writeFile('./productos.txt', JSON.stringify([producto], null, 2));
+                return{status:"success", message:"producto guardado"}
+            } catch {
+                return {status:"error", message:"No se pudo guardar"}
+            }
         }
-        fs.promises.writeFile('./productos.txt', JSON.stringify(producto, null, 2)
-        ).then(()=>{
-            return {status:"success", message:"Productos guardados con Exito!"};
-            
-        }).catch((error) => {
-            throw new Error(`Error en escritura: ${error}`);
-
-        })
     }
-    async getById(id){
+    // async editById(producto){
+    //     try{
+    //         let productos = await fs.promises.readFile('./productos.txt', 'utf-8');
+    //         let prodParse = JSON.parse(productos);
+    //         let encontarProd = prodParse.find(p=>p.id===producto.id);
+    //         encontarProd.push(producto)
+
+    //     }
+    //     catch{
+    //         throw new Error('El item no existe o el id esta mal escrito!')
+    //     }
+    // }
+    async getById(id){//Obtien prod por id. Funcion asincrona
         try{
             let dato = await fs.promises.readFile('./productos.txt', 'utf-8');
             let obj = JSON.parse(dato);
             let objId = obj.find(p=>p.id===id)
-            return(console.log(objId))
+            return(objId)
         }
         catch{
             throw new Error('El item no existe o el id esta mal escrito!')
