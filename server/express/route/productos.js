@@ -27,10 +27,16 @@ router.post('/', (req,res)=>{
 })
 
 //PUT
-// router.put('/:pid',(req,res)=>{
-//     let id = req.params.pid;
-//     contenedor.
-// })
+router.put('/', async (req,res)=>{
+    try {
+        let product = await contenedor.editById(req.body)
+        res.send({message:"Editado con exito"})
+    } catch{
+        return({message:"Error al editar"})
+    }
+})
+
+
 //DELETE
 router.delete('/:pid',(req,res)=>{
     let id = req.params.pid;

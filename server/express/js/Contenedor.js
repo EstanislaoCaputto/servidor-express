@@ -12,6 +12,7 @@ class Contenedor{
             let prod = JSON.parse(data)
             let id = crearId(5)
             producto.id = id
+            producto.thumnail = '';
             prod.push(producto)
             await fs.promises.writeFile('./productos.txt', JSON.stringify(prod, null, 2));
             console.log(`${producto.titulo} guardado exitosamente con el id: ${producto.id}`)
@@ -27,18 +28,24 @@ class Contenedor{
             }
         }
     }
-    // async editById(producto){
-    //     try{
-    //         let productos = await fs.promises.readFile('./productos.txt', 'utf-8');
-    //         let prodParse = JSON.parse(productos);
-    //         let encontarProd = prodParse.find(p=>p.id===producto.id);
-    //         encontarProd.push(producto)
+    async editById(producto){
+        try{
+            let productos = await fs.promises.readFile('./productos.txt', 'utf-8');
+            let prodParse = JSON.parse(productos);
+            let filtarLista = prodParse.filter(p=>p.id!==producto.id);
+            filtarLista.push(producto)
+            
+            try {
+                await fs.promises.writeFile('./productos.txt',JSON.stringify(filtarLista,null,2))
+            } catch{
+                return {status:"error", message:"No se pudo editar el Producto"}
+            }
 
-    //     }
-    //     catch{
-    //         throw new Error('El item no existe o el id esta mal escrito!')
-    //     }
-    // }
+        }
+        catch{
+            throw new Error('El item no existe o el id esta mal escrito!')
+        }
+    }
     async getById(id){//Obtien prod por id. Funcion asincrona
         try{
             let dato = await fs.promises.readFile('./productos.txt', 'utf-8');
@@ -63,7 +70,7 @@ class Contenedor{
     async eliminarPorId(id){
         let dato = await fs.promises.readFile('./productos.txt', 'utf-8');
         let objetos = JSON.parse(dato);
-        let objBorrado = objetos.filter(obj=>obj.id===id)
+        let objBorrado = objetos.filter(obj=>obj.id!==id)
         
         try {
             await fs.promises.writeFile('./productos.txt', JSON.stringify(objBorrado, null, 2));

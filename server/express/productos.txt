@@ -18,9 +18,9 @@
     "id": "7dp1p"
   },
   {
-    "titulo": "lucky",
-    "descripcion": "tabaco industrial",
-    "precio": 250,
-    "id": "WSD0T"
+    "titulo": "Sairy",
+    "descripcion": "Tabaco carisimo al pedo",
+    "id": "WSD0T",
+    "precio": "400"
   }
 ]

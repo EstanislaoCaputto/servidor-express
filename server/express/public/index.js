@@ -12,7 +12,7 @@ document.addEventListener('submit', event=>{
     }
     fetch('http://localhost:8080/api/productos',{
         method:'POST',
-        body:JSON.stringify(dato),
+        body:JSON.stringify(req),
         headers:{
             "Content-type":"application/json"
         }
