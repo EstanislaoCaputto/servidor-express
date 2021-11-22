@@ -1,0 +1,9 @@
+[
+  {
+    "titulo": "4-Leguas",
+    "descripcion": "Tabaco barato",
+    "precio": 250,
+    "thumbnail": "http://localhost:8080/imagenes/1637619116395image.jpg",
+    "id": "xwsfi"
+  }
+]
