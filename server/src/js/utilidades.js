@@ -8,4 +8,4 @@ let crearId = (largo) => {
     return resultado;
 };
 
-module.exports = crearId;
+export default crearId

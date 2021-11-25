@@ -1,0 +1,11 @@
+<div>
+    <a href="/"><button>Cargar Producto</button></a>
+    {{#each list}}
+    <div>
+        <p>Nombre: {{this.titulo}}</p>
+        <p>Precio: ${{this.precio}}</p>
+        <p>Descripcion: {{this.descripcion}}</p>
+        <img src={{this.thumbnail}}
+    </div>
+    {{/each}}
+</div>

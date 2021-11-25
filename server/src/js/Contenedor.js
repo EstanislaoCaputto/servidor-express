@@ -1,5 +1,5 @@
-const fs = require('fs');
-const crearId = require('./utilidades');
+import fs from 'fs'
+import crearId from './utilidades.js';
 
 class Contenedor{
     constructor(archivo){
@@ -11,8 +11,7 @@ class Contenedor{
             let data = await fs.promises.readFile('./productos.txt','utf-8')
             let prod = JSON.parse(data)
             let id = crearId(5)
-            producto.id = id
-            producto.thumnail = '';
+            producto.id = id;
             prod.push(producto)
             await fs.promises.writeFile('./productos.txt', JSON.stringify(prod, null, 2));
             console.log(`${producto.titulo} guardado exitosamente con el id: ${producto.id}`)
@@ -95,4 +94,4 @@ class Contenedor{
 //misProductos.eliminarTodo()
 //misProductos.getById("qxgzHT67FX")
 
-module.exports = Contenedor
+export default Contenedor

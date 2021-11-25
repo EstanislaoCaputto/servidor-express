@@ -3,7 +3,28 @@
     "titulo": "4-Leguas",
     "descripcion": "Tabaco barato",
     "precio": 250,
-    "thumbnail": "http://localhost:8080/imagenes/1637619116395image.jpg",
+    "thumbnail": "http://localhost:8080/1637619116395image.jpg",
     "id": "xwsfi"
+  },
+  {
+    "titulo": "arlequin",
+    "descripcion": "Tabaco fino, rico y caro",
+    "precio": 400,
+    "thumbnail": "http://localhost:8080/1637766491421image.jpg",
+    "id": "AV8Jm"
+  },
+  {
+    "titulo": "van-häasen",
+    "descripcion": "Tabaco negro",
+    "precio": 350,
+    "thumbnail": "http://localhost:8080/1637766762755image.jpg",
+    "id": "kcK8u"
+  },
+  {
+    "titulo": "Las hojas",
+    "descripcion": "tabaco baraten",
+    "precio": 180,
+    "thumbnail": "http://localhost:8080/1637774431036image.jpg",
+    "id": "Fsc7A"
   }
 ]

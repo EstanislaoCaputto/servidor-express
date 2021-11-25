@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const upload = require('../services/upload');
-const Contenedor = require('../js/Contenedor');
+import upload from '../services/upload.js';
+import Contenedor from '../js/Contenedor.js';
 const contenedor = new Contenedor();
 
 //GET
@@ -20,10 +20,10 @@ router.get('/:pid', (req,res)=>{ // Obtiene producto por ID
 
 //POST
 router.post('/', upload.single('image'), (req,res)=>{ //Agrega un nuevo producto
+    let file = req.file
     let producto = req.body;
     producto.precio = parseInt(producto.precio)
-    producto.thumbnail = "http://localhost:8080/imagenes/"+req.file.filename;
-    console.log(req.file)
+    producto.thumbnail = req.protocol+"://" + req.hostname+":8080/"+req.file.filename;
     contenedor.save(producto).then(result=>{
         res.send(result)
     })
@@ -47,4 +47,4 @@ router.delete('/:pid',(req,res)=>{
         res.send(result)
     })
 })
-module.exports = router;
+export default router
