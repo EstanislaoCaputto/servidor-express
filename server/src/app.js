@@ -34,6 +34,7 @@ app.use((err,req,res,next)=>{
 })
 app.use('/api/productos', ProductRouter);
 
+//Desafio de la clase 9
 // app.get('/',(req,res)=>{
 //     let timestamp= Date.now();
 //     let time = new Date(timestamp);
@@ -55,7 +56,6 @@ app.get('/views/productos',(req, res)=>{
 
 app.post('/api/subirarchivo', upload.array('images'),(req,res)=>{
     const files = req.files;
-    console.log(files);
     if (!files ||files.length===0) {
         res.status(500).send({message:"No se subio el archivo"})
     }

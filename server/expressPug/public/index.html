@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio-EstanislaoCaputto</title>
+</head>
+<body>
+    <div>
+        <form id="prodForm" name="prodForm">
+            <h2>Nuevos Productos</h2>
+            <div>
+                <label for="titulo">Titulo</label>
+                <input name="titulo" required>
+                <label for="descripcion">Descripcion</label>
+                <input name="descripcion">
+                <label for="precio">Precio</label>
+                <input name="precio" type="number" required> 
+                <label for="image">Imagen</label>
+                <input class="form-control" type="file" accept="image/*" name="image" id="image" required>
+                <button type="submit">Subir Producto</button>
+            </div>
+            <div style="display:flex">
+                <div>
+                    <img id="preview">
+                </div>
+                <div style="width:100%; padding-top:100px">
+                    <p class="image-text">Sube la imagen del Producto</p>
+                </div>
+            </div>
+        </form>
+        <div>
+            <a href="/productos"><button>Ver Productos Cargados</button></a>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>

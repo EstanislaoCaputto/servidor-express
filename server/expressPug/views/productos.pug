@@ -1,0 +1,13 @@
+html 
+    head
+        title= "Productos con Pug" 
+    body
+        a(href="/")
+            button= "volver a productos"
+        
+        each obj in objetos
+            p='Titulo: '+obj.titulo
+            p='Precio: $'+obj.precio
+            p='Descripcion: '+obj.descripcion
+            img(src=obj.thumbnail, alt="fotoProducto")
+                
