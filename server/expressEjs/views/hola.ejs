@@ -1,12 +1,30 @@
+<% let existe = todosLosProductos.length>0%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Productos</title>
 </head>
 <body>
-    <p><%= nombre %></p>
+    <a href="/"><button>Cargar productos</button></a>
+    <%if(existe){%>
+        <div>
+            <% todosLosProductos.forEach(function(prod){%>
+                
+                    
+                <h3><%=prod.titulo%></h3>
+                <p><%=prod.precio%></p>
+                <p><%=prod.descripcion%></p>
+                <img src=<%=prod.thumbnail%> alt="foto del producto">
+            
+            <%});%>
+        </div>
+        
+    
+    <%}else{%>
+        <p> No hay productos que mostrar</p>
+    <%}%>
 </body>
 </html>

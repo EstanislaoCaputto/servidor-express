@@ -63,7 +63,7 @@ class Contenedor{
             return(objetos)
 
         }catch (error){
-            console.log(`Error de escritura : ${error}`)
+            console.log(`Error de lectura : ${error}`)
         }
     }
     async eliminarPorId(id){
