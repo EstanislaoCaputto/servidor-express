@@ -27,7 +27,7 @@ app.get('/productos', (req,res)=>{
     })
 })
 
-app.post('/productos', upload.array('images'),(req,res)=>{
+app.post('/productos', upload.array('image'),(req,res)=>{
     const files = req.files;
     if (!files ||files.length===0) {
         res.status(500).send({message:"No se subio el archivo"})

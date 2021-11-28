@@ -26,5 +26,19 @@
     "precio": 180,
     "thumbnail": "http://localhost:8080/1637774431036image.jpg",
     "id": "Fsc7A"
+  },
+  {
+    "titulo": "OCB-Slim",
+    "descripcion": "filtros finos",
+    "precio": 120,
+    "thumbnail": "http://localhost:8080/1638120032412image.jpg",
+    "id": "2quLF"
+  },
+  {
+    "titulo": "cedas-ocb",
+    "descripcion": "cedas negras",
+    "precio": 100,
+    "thumbnail": "http://localhost:8080/1638120497029image.jpg",
+    "id": "pFVw0"
   }
 ]
