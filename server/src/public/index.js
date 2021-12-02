@@ -1,3 +1,17 @@
+const socket = io();
+socket.on('productosTiempoReal',dato=>{
+    let productos = dato;
+    fetch('templates/tablaProductos.handlebars').then(string=>string.text()).then(templates=>{
+        const plantillaProcesada = Handlebars.compile(templates)
+        const templObj={
+            productos:productos
+        }
+        const html = plantillaProcesada(templObj);
+        let div = document.getElementById('tablaProductos');
+        div.innerHTML=html
+    })
+})
+
 document.addEventListener('submit', event=>{
     event.preventDefault();
     let form = document.querySelector('#prodForm');
@@ -19,7 +33,7 @@ document.addEventListener('submit', event=>{
     }).then(result=>{
         return result.json()
     }).then(json=>{
-        alert(JSON.parse(json));
+        console.log(json);
     })
 })
 

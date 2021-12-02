@@ -1,5 +1,8 @@
 import fs from 'fs'
 import crearId from './utilidades.js';
+import __dirname from '../utils.js';
+
+const prodURL = __dirname+'/productos.txt'
 
 class Contenedor{
     constructor(archivo){
@@ -8,19 +11,19 @@ class Contenedor{
     }
     async save(producto) { //Recibe un objeto, lo guarda en el archivo, devuelve el id asignado.
         try{
-            let data = await fs.promises.readFile('./productos.txt','utf-8')
+            let data = await fs.promises.readFile(prodURL,'utf-8')
             let prod = JSON.parse(data)
             let id = crearId(5)
             producto.id = id;
             prod.push(producto)
-            await fs.promises.writeFile('./productos.txt', JSON.stringify(prod, null, 2));
+            await fs.promises.writeFile(prodURL, JSON.stringify(prod, null, 2));
             console.log(`${producto.titulo} guardado exitosamente con el id: ${producto.id}`)
             return {status:"success", message:"producto guardado"}
         }catch{
             try {
                 let id = crearId(5)
                 producto.id = id
-                await fs.promises.writeFile('./productos.txt', JSON.stringify([producto], null, 2));
+                await fs.promises.writeFile(prodURL, JSON.stringify([producto], null, 2));
                 return{status:"success", message:"producto guardado"}
             } catch {
                 return {status:"error", message:"No se pudo guardar"}
@@ -29,13 +32,13 @@ class Contenedor{
     }
     async editById(producto){
         try{
-            let productos = await fs.promises.readFile('./productos.txt', 'utf-8');
+            let productos = await fs.promises.readFile(prodURL, 'utf-8');
             let prodParse = JSON.parse(productos);
             let filtarLista = prodParse.filter(p=>p.id!==producto.id);
             filtarLista.push(producto)
             
             try {
-                await fs.promises.writeFile('./productos.txt',JSON.stringify(filtarLista,null,2))
+                await fs.promises.writeFile(prodURL,JSON.stringify(filtarLista,null,2))
             } catch{
                 return {status:"error", message:"No se pudo editar el Producto"}
             }
@@ -47,7 +50,7 @@ class Contenedor{
     }
     async getById(id){//Obtien prod por id. Funcion asincrona
         try{
-            let dato = await fs.promises.readFile('./productos.txt', 'utf-8');
+            let dato = await fs.promises.readFile(prodURL, 'utf-8');
             let obj = JSON.parse(dato);
             let objId = obj.find(p=>p.id===id)
             return(objId)
@@ -58,7 +61,7 @@ class Contenedor{
     }
     async getAll() { //Devuelve un array con los objetos presentes en el archivo
         try {
-            let datos = await fs.promises.readFile('./productos.txt', 'utf-8')
+            let datos = await fs.promises.readFile(prodURL, 'utf-8')
             let objetos = JSON.parse(datos)
             return(objetos)
 
@@ -67,12 +70,12 @@ class Contenedor{
         }
     }
     async eliminarPorId(id){
-        let dato = await fs.promises.readFile('./productos.txt', 'utf-8');
+        let dato = await fs.promises.readFile(prodURL, 'utf-8');
         let objetos = JSON.parse(dato);
         let objBorrado = objetos.filter(obj=>obj.id!==id)
         
         try {
-            await fs.promises.writeFile('./productos.txt', JSON.stringify(objBorrado, null, 2));
+            await fs.promises.writeFile(prodURL, JSON.stringify(objBorrado, null, 2));
             return(console.log('Producto eliminado satisfactoriamente'))
             
         }catch(err){
@@ -80,7 +83,7 @@ class Contenedor{
         }
     }
     async eliminarTodo() {//Elimina todo el archivo
-        await fs.promises.unlink('./productos.txt', function (err) {
+        await fs.promises.unlink(prodURL, function (err) {
             if (err) throw err;
             console.log('Archivo eliminado!');
         });

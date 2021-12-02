@@ -3,25 +3,31 @@ import cors from 'cors'
 import {engine} from 'express-handlebars'
 import upload from './services/upload.js'
 import Contenedor from './js/Contenedor.js'
+import __dirname from './utils.js';
+import { Server } from 'socket.io'
+
+
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 const productos = new Contenedor('productos.txt');
 const server = app.listen(PORT,()=>{
     console.log(`Servidor escuchando en el puesrto: ${PORT}`)
 })
+export const io = new Server(server)
 import router from './route/productos.js';
 const ProductRouter = router
 
 //HANDLEBARS
 app.engine('handlebars', engine())
-app.set('views', './views')
+app.set('views', __dirname+'/views')
 app.set('view engine', 'handlebars')
 
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({extended:true}))
-app.use(express.static('./public'))
+app.use(express.static(__dirname+'/public'))
 app.use((req,res,next)=>{
     let timestamp= Date.now();
     let time = new Date(timestamp);
@@ -60,4 +66,10 @@ app.post('/api/subirarchivo', upload.array('images'),(req,res)=>{
         res.status(500).send({message:"No se subio el archivo"})
     }
     res.send(files)
+})
+
+io.on('connection', async socket=>{
+    console.log(`El socket ${socket.id} se ha conectado`);
+    let producto = await productos.getAll();
+    socket.emit('productosTiempoReal', producto)
 })

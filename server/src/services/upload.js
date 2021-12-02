@@ -1,11 +1,20 @@
-import multer from "multer";
+import multer from 'multer';
+import __dirname from '../utils.js';
 const storage = multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,'public')
+    destination:(req,file,cb)=>{
+        if(file.fieldname==="image"){
+            cb(null,__dirname+'/public');
+        }else if(file.fieldname==="documents"){
+            cb(null,'documents');
+        }
+        else{
+            cb(null,'uploads');
+        }
     },
     filename:(req,file,cb)=>{
-        cb(null, Date.now()+file.fieldname+"."+file.originalname.split(".")[1])
+        cb(null,Date.now()+file.originalname);
     }
 })
 const upload = multer({storage:storage});
-export default upload
+
+export default upload;

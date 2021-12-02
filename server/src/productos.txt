@@ -40,5 +40,12 @@
     "precio": 100,
     "thumbnail": "http://localhost:8080/1638120497029image.jpg",
     "id": "pFVw0"
+  },
+  {
+    "titulo": "OCB-Cañamo",
+    "descripcion": "cedas de cañamo",
+    "precio": 60,
+    "thumbnail": "http://localhost:8080/1638480202388cedas-ocb-cañamo.jpg",
+    "id": "eIZKB"
   }
 ]
