@@ -47,5 +47,23 @@
     "precio": 60,
     "thumbnail": "http://localhost:8080/1638480202388cedas-ocb-cañamo.jpg",
     "id": "eIZKB"
+  },
+  {
+    "titulo": "Hellbot Magna 1",
+    "precio": 41901,
+    "marca": "Hellbot",
+    "tipo": "Impresora FDM",
+    "codigo": "H001",
+    "thumbnail": "http://localhost:8080/1638552316265Ender-3-Max-izq.png",
+    "id": "mxwbW"
+  },
+  {
+    "titulo": "Hellbot Magna 1",
+    "precio": 41901,
+    "marca": "Hellbot",
+    "tipo": "Impresora FDM",
+    "codigo": "H001",
+    "thumbnail": "http://localhost:8080/1638552720314Ender-3-Max-izq.png",
+    "id": "lTQoz"
   }
 ]

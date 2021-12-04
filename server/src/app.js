@@ -60,16 +60,20 @@ app.get('/views/productos',(req, res)=>{
     })
 })
 
-app.post('/api/subirarchivo', upload.array('images'),(req,res)=>{
-    const files = req.files;
-    if (!files ||files.length===0) {
-        res.status(500).send({message:"No se subio el archivo"})
-    }
-    res.send(files)
-})
-
+// app.post('/api/subirarchivo', upload.array('images'),(req,res)=>{
+//     const files = req.files;
+//     if (!files ||files.length===0) {
+//         res.status(500).send({message:"No se subio el archivo"})
+//     }
+//     res.send(files)
+// })
+let message = [];
 io.on('connection', async socket=>{
     console.log(`El socket ${socket.id} se ha conectado`);
     let producto = await productos.getAll();
     socket.emit('productosTiempoReal', producto)
+    socket.on('message',data=>{
+        message.push(data)
+        io.emit('messagelog', message);
+    })
 })

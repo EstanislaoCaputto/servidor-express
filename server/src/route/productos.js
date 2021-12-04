@@ -30,6 +30,7 @@ router.get('/:pid', (req,res)=>{ // Obtiene producto por ID
 router.post('/', upload.single('image'), (req,res)=>{ //Agrega un nuevo producto
     let file = req.file
     let producto = req.body;
+    console.log(file)
     producto.precio = parseInt(producto.precio)
     producto.thumbnail = req.protocol+"://" + req.hostname+":8080/"+file.filename;
     contenedor.save(producto).then(result=>{
